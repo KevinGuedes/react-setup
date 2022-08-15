@@ -1,0 +1,29 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo '🏗️👷 Formatting, styling and building your project before committing changes'
+
+npm run lint:fix ||
+(
+  echo '😤🏀👋😤 ESLint Check Failed. 😤🏀👋😤
+    Make the required changes listed above, add changes and try to commit again.'
+  false;
+)
+
+npm run pretty ||
+(
+  echo '🤢🤮🤢🤮 Prettier Check Failed. 🤢🤮🤢🤮
+    Run npm run format, add changes and try commit again.';
+  false;
+)
+
+echo '🤔🤔🤔🤔 Code looks good. Trying to build project now. 🤔🤔🤔🤔'
+
+npm run build ||
+(
+  echo '❌👷🔨❌ Build Failed. ❌👷🔨❌
+    Build failed: View the errors above to see why.'
+  false;
+)
+
+echo '✅✅✅✅ Winner winner chicken dinner. I am committing changes now. ✅✅✅✅'
