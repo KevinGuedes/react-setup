@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo '🏗️👷 Checking your commit message'
+
+npx commitlint --edit $1 ||
+(
+  echo '😤🏀👋😤 Commitlint Check Failed. 😤🏀👋😤
+    Make sure your commit message is following the target pattern'
+  false;
+)
