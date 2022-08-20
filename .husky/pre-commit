@@ -3,17 +3,10 @@
 
 echo '🏗️👷 Formatting, styling and building your project before committing changes'
 
-npm run lint:fix ||
+npx lint-staged ||
 (
-  echo '😤🏀👋😤 ESLint Check Failed. 😤🏀👋😤
-    Make the required changes listed above, add changes and try to commit again.'
-  false;
-)
-
-npm run pretty ||
-(
-  echo '🤢🤮🤢🤮 Prettier Check Failed. 🤢🤮🤢🤮
-    Run npm run format, add changes and try commit again.';
+  echo '🤢🤮🤢🤮 Linters Check Failed. 🤢🤮🤢🤮
+    Run npm run lint or npm run pretty to check what went wrong.';
   false;
 )
 
